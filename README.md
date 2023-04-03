@@ -11,16 +11,16 @@ About:
 ## Preparation
 Experiments are based on the code from [alpaca_lora_4bit](https://github.com/johnsmith0031/alpaca_lora_4bit), with modifications for specific tasks.
 
-- [ ] Add more details
+- [ ] Add more details: bitsandbytes installation is tricky
 
 ## PubMedQA
 
-- [ ] Add more details
+- [ ] Add more details: how to prepare prompt (and response)
 
 ### Single 24G GPU: 500 samples 10 epochs in 3 hours
 ```
-CUDA_VISIBLE_DEVICES=0 python finetune.py pubmedqa/train.json \ 
-    --ds_type gpt4all --lora_out_dir pubmedqa/lora \
+CUDA_VISIBLE_DEVICES=0 python finetune.py pubmedqa_train.json \ 
+    --ds_type gpt4all --lora_out_dir PATH_TO_SAVE_LORA \
     --llama_q4_config_dir PATH_TO_LLAMA_DIR \ 
     --llama_q4_model PATH_TO_LLAMA_WEIGHT \
     --val_set_size 0.0 --grad_chckpt --mbatch_size 2 --cutoff_len 512 \ 
@@ -43,7 +43,7 @@ CUDA_VISIBLE_DEVICES=0 python finetune.py pubmedqa/train.json \
 
 ## MMLU
 
-- [ ] Add more details
+- [ ] Add more details: how to prepare prompts
 
 ### Comparisons: 5-shot test accuracy (%)
 | Model              | Humanities  | STEM        | Social Sciences | Other        | Average    |
