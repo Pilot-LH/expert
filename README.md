@@ -1,15 +1,32 @@
 # EXPERT: EXtremely Parameter Efficient loRa Tuning
 
-About:  
+About:   
 
 ## Table of Contents
 
+- [Preparation](#preparation)
 - [PubMedQA](#pubmedqa)
 - [MMLU](#mmlu)
 
+## Preparation
+Experiments are based on the code from [alpaca_lora_4bit](https://github.com/johnsmith0031/alpaca_lora_4bit), with modifications for specific tasks.
+
+- [ ] Add more details
+
 ## PubMedQA
 
-### Notes
+- [ ] Add more details
+
+### Single 24G GPU: 500 samples 10 epochs in 3 hours
+```
+CUDA_VISIBLE_DEVICES=0 python finetune.py pubmedqa/train.json \ 
+    --ds_type gpt4all --lora_out_dir pubmedqa/lora \
+    --llama_q4_config_dir PATH_TO_LLAMA_DIR \ 
+    --llama_q4_model PATH_TO_LLAMA_WEIGHT \
+    --val_set_size 0.0 --grad_chckpt --mbatch_size 2 --cutoff_len 512 \ 
+    --warmup_steps 10 --save_steps 10 --save_total_limit 10 --epochs 10 \ 
+    --batch_size 50 --lr 1e-4 
+```
 
 ### Comparisons: reasoning-required setting
 | Model                                | Accuracy (%) | F1 (%) | Size      |
@@ -26,7 +43,7 @@ About:
 
 ## MMLU
 
-### Notes
+- [ ] Add more details
 
 ### Comparisons: 5-shot test accuracy (%)
 | Model              | Humanities  | STEM        | Social Sciences | Other        | Average    |
