@@ -1,6 +1,10 @@
 # EXPERT: EXtremely Parameter Efficient loRa Tuning
 
-About:   
+TL;DR: It's possible to train your own **expert** model with a single 24G GPU in a few hours.
+
+About: Generalist models (pre-trained or instruction-tuned) are great, but most of them are closed, requiring access to your data and difficult to tweak with limited resources. In this project, we focus on a specialist model and show that it is possible to train it with affordable resources in terms of compute and time, while achieving expert-level performance on a specific task. Simply speaking, we directly tune the quantized strong LLM on task data in a parameter-efficient manner. As a concrete example, tuning LLaMA-33B-4bit with LoRA on PubMedQA training data leads to 75.6% accuracy on test data, which is better than GPT-4 to some extent, while only a single 24G GPU and 3 hours are needed.
+
+Notes: LLaMA-33B is leveraged in this project, which is not fully open-sourced yet.
 
 ## Table of Contents
 
