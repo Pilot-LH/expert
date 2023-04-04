@@ -1,10 +1,8 @@
-# (WIP) EXPERT: EXtremely Parameter Efficient loRa Tuning. 
+# EXPERT: EXtremely Parameter Efficient loRa Tuning. 
 
 TL;DR: It's possible to train your own **expert** model with a single 24G GPU in a few hours.
 
 About: Generalist models (pre-trained or instruction-tuned) are great, but most of them are closed, requiring access to your data and difficult to tweak with limited resources. In this project, we focus on a specialist model and show that it is possible to train it with affordable resources in terms of compute and time, while achieving expert-level performance on a specific task. Simply speaking, we directly tune the quantized strong LLM on task data in a parameter-efficient manner. As a concrete example, tuning LLaMA-33B-4bit with LoRA on PubMedQA training data leads to 75.6% accuracy on test data, which is better than GPT-4 to some extent, while only a single 24G GPU and 3 hours are needed.
-
-- [ ] So What ???
 
 Notes: LLaMA-33B is leveraged in this project, which is not fully open-sourced yet.
 
@@ -68,7 +66,7 @@ Notes:
 | LLaMA-33B          | 55.8        | 46.0        | 66.7            | 63.4         | 57.8        |
 | **LLaMA-33B-4bit** | 62.0 (+6.2) | 44.9 (-1.1) | 64.1 (-2.6)     | 58.6 (-4.8)  | 56.2 (-1.6) |
 | LLaMA-65B          | 61.8        | 51.7        | 72.9            | 67.4         | 63.4        |
-| LLaMA-I-65B        | ----        | ----        | ----            | ----         | 68.9 (+5.5) |
+| LLaMA-I-65B        | 67.4        | 56.6        | 79.2            | 72.6         | 68.9 (+5.5) |
 
 Notes: 
 1. Since LLaMA-33B-4bit is quantized (by open-source implementation of GPTQ) and the generation setting is far from optimal, the performance drop from LLaMA-33B reported is reasonable.
