@@ -4,6 +4,8 @@ TL;DR: It's possible to train your own **expert** model with a single 24G GPU in
 
 About: Generalist models (pre-trained or instruction-tuned) are great, but most of them are closed, requiring access to your data and difficult to tweak with limited resources. In this project, we focus on a specialist model and show that it is possible to train it with affordable resources in terms of compute and time, while achieving expert-level performance on a specific task. Simply speaking, we directly tune the quantized strong LLM on task data in a parameter-efficient manner. As a concrete example, tuning LLaMA-33B-4bit with LoRA on PubMedQA training data leads to 75.6% accuracy on test data, which is better than GPT-4 to some extent, while only a single 24G GPU and 3 hours are needed.
 
+- [ ] So What ???
+
 Notes: LLaMA-33B is leveraged in this project, which is not fully open-sourced yet.
 
 Special Thanks: this document is generated with the help of ChatGPT.
@@ -43,6 +45,7 @@ CUDA_VISIBLE_DEVICES=0 python finetune.py pubmedqa_train.json \
 | Codex (5-shot)                       | 78.2         | ----   | 175B      |
 | Human Performance                    | 78.0         | 72.2   | ----      |
 | Galactica (0-shot)                   | 77.6         | ----   | 120B      |
+| Flan-PALM (3-shot)                   | 77.2         | ----   | 62B       |
 | **LLaMA-33B-4bit (tuned with LoRA)** | 75.6         | 54.1   | 33B + 20M |
 | GPT-4 (0-shot)                       | 75.2         | ----   | ----      |
 | GPT-4 (5-shot)                       | 74.4         | ----   | ----      |
@@ -50,7 +53,7 @@ CUDA_VISIBLE_DEVICES=0 python finetune.py pubmedqa_train.json \
 | DRAGON                               | 73.4         | ----   | 360M      |
 
 Notes: 
-1. There are some advanced techniques used in GPT-3.5 + Z-Code++ and Codex (5-shot) like CoT and Voting.
+1. There are some advanced techniques used in GPT-3.5 + Z-Code++ and Codex (5-shot) like CoT, SC and Voting.
 2. It's interesting to see Galactica (0-shot) perform so well, and GPT-4 (0-shot) is better than GPT-4 (5-shot).
 3. There's some problem with F1 score, as it's averaged over three classes 'yes', 'no' and 'maybe'. As we can see from pubmedqa_preds.json, LLM only get 1 of 55 samples in "maybe" right. 
 4. PubMedGPT and DRAGON respresent full-training of small specialist models. 
